@@ -294,7 +294,7 @@ addEventListener("hashchange",()=>{fromHash();render()});
 // ---------- Identificador de tom ----------
 const K=document.getElementById("k");let kOn=false,kCh=[],kMin=false;
 const KN=i=>NF[md(i)]=="Gb"?"F#":NF[md(i)];
-const kname=(t,mi)=>KN(t)+(mi?"m":"");
+const kname=(t,mi)=>{let n=KN(t);if(mi)n=({Db:"C#",Ab:"G#"})[n]||n;return n+(mi?"m":"")};
 const parseCh=w=>{const r=w.match(/^([A-G][#b]?)(.*)$/);if(!r||I[r[1]]==null)return null;const q=r[2];const min=/^(m(?!aj)|min|-)/.test(q)&&!/^maj/.test(q);const dim=/^(dim|°|º|m7\(b5\)|m7b5)/.test(q);return{r:I[r[1]],q:dim?"d":min?"m":"M",txt:w}};
 const DIA={M:[[0,"M"],[2,"m"],[4,"m"],[5,"M"],[7,"M"],[9,"m"],[11,"d"]],m:[[0,"m"],[2,"d"],[3,"M"],[5,"m"],[7,"m"],[7,"M"],[8,"M"],[10,"M"],[11,"d"]]};
 function scoreKeys(cs){const out=[];for(let t=0;t<12;t++)for(const mo of["M","m"]){let sc=0;cs.forEach((c,i)=>{const iv=md(c.r-t);const ok=DIA[mo].some(([a,q])=>a==iv&&(q==c.q||(c.q=="M"&&q=="M")));
