@@ -1,3 +1,5 @@
-# Qual o tom?
+# Repertório Mananciais
 
-Detector de tom ao vivo pelo microfone (Mananciais). Abra pelo GitHub Pages no iPad/iPhone e toque em "Escutar".
+Repertório da Sala de Quarta/Sexta com mapa de acordes, graus, transposição, anotações e identificador de tom (ao vivo pelo microfone, por arquivo ou pelos acordes).
+
+Acesse: https://jhonstrider.github.io/study-musics/

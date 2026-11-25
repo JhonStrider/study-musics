@@ -2,109 +2,384 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repertório Mananciais</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Qual o tom?">
-<title>Qual o tom? · Mananciais</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Archivo+Narrow:wght@700&display=swap" rel="stylesheet">
+<meta name="apple-mobile-web-app-title" content="Mananciais">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#121315;--card:#1c1d20;--ink:#eceae4;--mut:#9a988f;--line:#2c2d31;--ch:#ffb26b;--acc:#7fd0d6}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Archivo,system-ui,sans-serif;min-height:100vh;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
-main{max-width:900px;margin:0 auto;display:grid;gap:16px}
-h1{font:800 22px Archivo;margin:0}
-.big{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;text-align:center}
-.key{font:700 clamp(96px,22vw,200px)/1 "Archivo Narrow",Archivo,sans-serif;color:var(--ch);letter-spacing:-2px}
-.sub{color:var(--mut);font-size:18px;margin-top:6px}
-.meter{height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:16px auto 0;max-width:420px}.meter i{display:block;height:100%;width:0;background:var(--acc);transition:width .3s}
-.alt{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-.alt span{font:700 24px "Archivo Narrow";color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:4px 14px}
-.alt span small{font:400 13px Archivo;color:var(--mut);margin-left:6px}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-button,select{font:600 17px Archivo;min-height:52px;padding:0 18px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
-button.go{background:var(--ch);color:#1a1206;border-color:var(--ch);font-weight:800;flex:1 1 220px}
-.lvl{flex:1 1 160px;height:8px;background:var(--line);border-radius:4px;overflow:hidden}.lvl i{display:block;height:100%;width:0;background:#7fd68a}
-.chroma{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;align-items:end;height:90px}
-.chroma div{background:var(--acc);border-radius:4px 4px 0 0;opacity:.85;min-height:2px}
-.names{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;text-align:center;color:var(--mut);font-size:12px}
-.note{color:var(--mut);font-size:14px}
+/* VOICE: calma, de palco à meia-luz; legível a 1 m de distância
+   IDEA: a folha de repertório presa na estante, com mapa de acordes
+   PICTURE: os próprios acordes, grandes, em compassos
+   COLOUR and TYPE: fundo carvão, acordes em âmbar-quente suave, Archivo
+   LAYOUT: barra de setlist no topo, uma música por tela, swipe/setas */
+:root{color-scheme:light dark;--bg:light-dark(#f7f5f0,#121315);--card:light-dark(#fff,#1c1d20);--ink:light-dark(#17181a,#eceae4);--mut:light-dark(#6b6a66,#9a988f);--line:light-dark(#e3e0d8,#2c2d31);--ch:light-dark(#b4430f,#ffb26b);--chbg:light-dark(#fbeee4,#2a221b);--acc:light-dark(#1d5c63,#7fd0d6);--fs:1}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Archivo,system-ui,sans-serif;overflow-x:clip;-webkit-tap-highlight-color:transparent}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:10px max(3vw,12px) 8px}
+.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.top h1{font:800 20px/1.1 Archivo;margin:0;flex:1 1 auto}
+.top h1 span{font-weight:400;color:var(--mut)}
+.ctl{display:flex;gap:6px;flex-wrap:wrap}
+button{font:600 16px Archivo;min-height:44px;min-width:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.set{display:flex;gap:6px;overflow-x:auto;margin-top:8px;padding-bottom:2px;scrollbar-width:none}
+.grp{flex:none;align-self:center;font:700 12px Archivo;color:var(--acc);padding:0 2px 0 8px}
+.set button{flex:none;font-size:14px;white-space:nowrap}
+.lists{display:flex;gap:6px}.lists button.on,.set button.on,#kbtn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{max-width:1100px;margin:0 auto;padding:18px max(3vw,12px) 120px}
+.head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.head h2{font:800 clamp(30px,5vw,48px)/1.05 Archivo;margin:0;text-wrap:balance;flex:1 1 300px}
+.meta{color:var(--mut);margin-top:4px;font-size:16px}
+.tom{display:flex;align-items:center;gap:6px}
+.tom b{font:700 26px Archivo Narrow;color:var(--ch);background:var(--chbg);border-radius:10px;padding:4px 14px;min-width:84px;text-align:center}
+.road{color:var(--mut);font-size:15px;margin:0 0 16px}
+.road strong{color:var(--ink);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:12px}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px 14px}
+.sec h3{margin:0 0 8px;font:700 calc(17px*var(--fs)) Archivo;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.sec h3 i{font-style:normal;font-weight:400;color:var(--mut);font-size:calc(14px*var(--fs))}
+.sec h3 em{font-style:normal;margin-left:auto;color:var(--acc);font-size:calc(15px*var(--fs))}
+.ln{display:flex;flex-wrap:wrap;align-items:center;gap:4px 0;margin:4px 0}
+.bar{display:flex;gap:10px;padding:2px 10px;border-left:2px solid var(--line)}
+.bar:last-child{border-right:2px solid var(--line)}
+.c{font:700 calc(26px*var(--fs))/1.25 "Archivo Narrow",Archivo,sans-serif;color:var(--ch);white-space:nowrap}
+.c small{display:block;font:600 calc(15px*var(--fs))/1.1 Archivo;color:var(--acc);text-align:center}
+.x{font:600 calc(15px*var(--fs)) Archivo;color:var(--acc);margin-left:8px}
+.tb{font:700 12px Archivo;color:var(--bg);background:var(--acc);border-radius:6px;padding:2px 8px;text-decoration:none;align-self:center}
+.riff{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:12px 14px;margin-top:12px}
+.riff h3{margin:0 0 6px;font:700 17px Archivo;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.riff h3 span{font-weight:400;color:var(--mut);font-size:14px;flex:1 1 200px}
+.riff textarea{width:100%;min-height:150px;font:15px/1.35 ui-monospace,Menlo,monospace;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px;white-space:pre;overflow-x:auto;resize:vertical}
+.kt{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:12px}
+.pad{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin:8px 0}
+.pad button{padding:0;font:700 18px "Archivo Narrow",Archivo}
+.pad button.m{color:var(--acc)}
+.inp{width:100%;font:600 18px "Archivo Narrow",Archivo;min-height:48px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.res{margin-top:10px;display:grid;gap:8px}
+.rk{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.rk b{font:700 28px "Archivo Narrow",Archivo;color:var(--ch);min-width:64px}
+.rk .mt{flex:1 1 140px;height:8px;border-radius:4px;background:var(--line);overflow:hidden}.rk .mt i{display:block;height:100%;background:var(--acc)}
+.rk small{color:var(--mut);flex:1 1 100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.chips span{font:700 18px "Archivo Narrow";color:var(--ch);background:var(--chbg);padding:2px 10px;border-radius:8px}
+.chips span small{color:var(--acc);font:600 13px Archivo;margin-left:4px}
+.live{grid-column:1/-1;text-align:center}
+.lkey{font:700 clamp(84px,18vw,170px)/1 "Archivo Narrow",Archivo,sans-serif;color:var(--ch)}
+.lvl{flex:1 1 140px;height:8px;background:var(--line);border-radius:4px;overflow:hidden}.lvl i{display:block;height:100%;width:0;background:#4caf6a}
+.chroma{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;align-items:end;height:70px;margin-top:12px}
+.chroma div{background:var(--acc);border-radius:4px 4px 0 0;min-height:2px}
+.cnames{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;color:var(--mut);font-size:12px;text-align:center}
+.go{background:var(--ch)!important;color:#1a1206!important;border-color:var(--ch)!important;font-weight:800}
+.note{color:var(--mut);font-size:15px;margin-top:14px}
+.foot{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center}
+.foot a{color:var(--acc);font-weight:600;display:inline-flex;align-items:center;min-height:44px}
+nav.pg{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:10px;padding:10px max(3vw,12px) calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 40%);pointer-events:none}
+nav.pg button{pointer-events:auto;min-height:52px;font-size:17px;max-width:46%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--card)}
+@media(max-width:600px){.c{font-size:calc(22px*var(--fs))}.top h1{font-size:17px}}
+@media(prefers-reduced-motion:no-preference){main.in{animation:f .25s ease-out}@keyframes f{from{opacity:0;transform:translateY(6px)}}}
 </style>
 </head>
 <body>
-<main>
-  <div class="row"><h1 style="flex:1">Qual o tom?</h1><span class="note" id="time"></span></div>
-  <section class="big">
-    <div class="key" id="key">–</div>
-    <div class="sub" id="sub">Toque em “Escutar” e deixe a banda tocar</div>
-    <div class="meter"><i id="conf"></i></div>
-    <div class="alt" id="alt"></div>
-  </section>
-  <div class="row">
-    <button class="go" id="go">Escutar</button>
-    <button id="reset">Recomeçar</button>
-    <select id="win" aria-label="Memória da análise">
-      <option value="8">Rápido (8s)</option>
-      <option value="20" selected>Normal (20s)</option>
-      <option value="45">Estável (45s)</option>
-    </select>
+<header>
+  <div class="top">
+    <div class="lists" id="lists"></div>
+    <h1 id="ttl">Repertório</h1>
+    <div class="ctl">
+      <button id="kbtn" aria-label="Identificar tom">Qual o tom?</button>
+      <button id="mode" aria-label="Alternar acordes e graus">Acordes</button>
+      <button id="tDn" aria-label="Meio tom abaixo">−½</button>
+      <button id="tUp" aria-label="Meio tom acima">+½</button>
+      <button id="fDn" aria-label="Diminuir fonte">A−</button>
+      <button id="fUp" aria-label="Aumentar fonte">A+</button>
+    </div>
   </div>
-  <div class="row"><span class="note">Microfone</span><div class="lvl"><i id="lvl"></i></div></div>
-  <section class="big" style="padding:16px">
-    <div class="chroma" id="chroma"></div>
-    <div class="names" id="names"></div>
-  </section>
-  <p class="note">Ouve o som ambiente, soma as notas dos últimos segundos e compara com o perfil de cada tom maior e menor (Krumhansl). Funciona melhor com harmonia tocando (violão, teclado, banda); voz sozinha ou bateria confundem. Tom e relativo (ex.: C e Am) usam as mesmas notas: confira pelo acorde onde a música “descansa”.</p>
-</main>
+  <div class="set" id="set" role="tablist"></div>
+</header>
+<main id="m"></main>
+<main id="k" hidden></main>
+<nav class="pg"><button id="prev">‹</button><button id="next">›</button></nav>
 <script>
 {
-const NM=["C","C#","D","Eb","E","F","F#","G","Ab","A","Bb","B"];
-const KMAJ=[6.35,2.23,3.48,2.33,4.38,4.09,2.52,5.19,2.39,3.66,2.29,2.88],KMIN=[6.33,2.68,3.52,5.38,2.60,3.53,2.54,4.75,3.98,2.69,3.34,3.17];
+// Acordes no tom original da cifra do Cifra Club; "sh" = semitons até o tom do repertório.
+const SEXTA=[
+{t:"Liberta-me de Mim",a:"Luma Elpidio",o:"E",sh:-4,u:"luma-elpidio/liberta-me-de-mim",k:3,
+ road:"Intro → V1 → Pré → Refrão → Solo → Pré → Refrão → Ponte → Solo 2 → Refrão 2x → Final",
+ s:[["Intro","","A7M(9) B4 E","2x"],
+ ["Verso 1","Não entendo o…","A2 B4 E","4x"],
+ ["Pré","Pois o bem…","A2 B4|E|C#m7;A2 B4|E|C#m7;A2|B4|E|C#m7;A2|B4|E|F#m7"],
+ ["Refrão","Então liberta-me…","A2|B4|E|F#m7(11)","2x"],
+ ["Solo 1","","A2 B4 E F#m7(11)"],
+ ["Ponte","E eu passo…","A2 B4 E|C#m7;A2 B4 E|C#m7;A2 B4 E"],
+ ["Solo 2","","E F#m7|A2 B4|E F#m7"],
+ ["Final","E reina o…","A2 B4 C#m7 B4|A2 B4 E"]]},
+{t:"Leva-me Além",a:"Trazendo a Arca",o:"D",sh:-2,u:"trazendo-arca/leva-me-alem",k:3,
+ road:"Intro → Verso → Refrão → Ponte → Verso → Refrão 2x → Final",
+ s:[["Intro","","D A/C# G D4 D|D A/C# G G/B A"],
+ ["Verso","Render a Ti…","D A/C#|Bm Bm/A G D/F#;Em A4 A/G|Em A4;G/B A/C# D A/C#|G;G A/G F#m7|Bm Bm/A;Em D/F#|G A"],
+ ["Refrão","Leva-me…","G/B A/C#|D A/D G/D D;D/F# G D/G G D/F#;Em D/F#|G A;G/B A/C#|D A/D G/D D;D/F# G G/D G D/F#;Em D/F# G G/A|D"],
+ ["Ponte","","G/D D|G/B A/C#"],
+ ["Final","Mais do teu…","Em D/F# G G/A|D G/D D"]]},
+{t:"Espírito, Enche a Minha Vida",a:"Quatro Por Um",o:"E",sh:-4,u:"quatro-por-um/espirito-enche-minha-vida",k:3,
+ road:"Intro → Verso 2x → Refrão → Verso → Refrão → Interlúdio → Refrão 2x",
+ s:[["Intro","","A9 F#m7 A9 F#m7","2x"],
+ ["Verso","Espírito, enche a…","E A9|E A9 B4;C#m7 B4|A9 E;A9 B4|E"],
+ ["Refrão","As minhas mãos…","A9 B|G#m7 C#m7;A9 B|C#m7;A9 B|G#m7 C#m7;A9 B|E"],
+ ["Interlúdio","","E A9 C#m7 F#m7;A9 F#m7 A9 F#m7","2x"],
+ ["Final","Diante do Teu…","A9 B|A9 F#m7|A9 F#m7"]]},
+{t:"Santo Espírito",a:"Laura Souguellis",o:"D",sh:-2,u:"laura-souguellis/santo-espirito",k:3,
+ road:"Refrão 2x → Verso → Refrão 2x → Solo → Ponte (repete) → Refrão",
+ s:[["Refrão","Santo Espírito, és…","D9|G5(7M) Em7","4x"],
+ ["Tag","Senhor, Tua glória…","D9 G5(7M)","2x"],
+ ["Verso","Não há nada…","D9|G5(7M)","4x"],
+ ["Solo","","D9 G5(7M) Em7","2x"],
+ ["Ponte","Vamos provar…","G5(7M) D/F#|Em7 D/F#","8x"],
+ ["Final","","Refrão → termina em D9"]]},
+{t:"Tu És",a:"fhop music",o:"D",sh:-2,u:"florianopolis-house-of-prayer/tu-es-aguas-purificadoras",k:3,
+ road:"Intro → Verso → Pré → Refrão → Verso → Pré → Refrão 2x → Pré 2x → Refrão 2x → Final",
+ s:[["Intro","","Bm7 A/C# G2","4x"],
+ ["Verso","Junto ao poço…","Bm7 A/C#|G2;Bm7 A/C# G2|Bm7;A/C# G2|Bm7 A/C# G2"],
+ ["Pré","Dá-me de beber…","Em7 D/F#|G2|D/F#;Em7 D/F#|G2|A"],
+ ["Refrão","Tu és, por…","D G|Em7|G A","2x"],
+ ["Refrão (final)","Tu és, por…","D C|G|Gm/Bb A","2x"],
+ ["Fim","","D G|Em7|G A D"]]},
+{t:"Sinto Fluir",a:"Marcelo Markes part. Casa Worship",o:"A",sh:3,u:"marcelo-markes/sinto-fluir",k:3,
+ road:"Intro → Verso → Refrão → Verso → Refrão → Ponte 4x → Refrão → Ponte → Refrão 4x",
+ s:[["Intro","","D A","2x"],
+ ["Verso","Eu procurei em…","D7M Bm7|F#m7|E4;D7M Bm7|F#m7|E4;D7M Bm7|F#m7 E4"],
+ ["Refrão","Sinto fluir teu…","D7M|A9","2x"],
+ ["Ponte","Eu quero beber…","D7M|Bm7(9)|A9|E4","4x"],
+ ["Final","Sinto fluir…","D7M|A9","4x"]]},
+{t:"Águas Purificadoras",a:"Diante do Trono",o:"D",sh:-2,u:"diante-do-trono/aguas-purificadoras",k:3,
+ road:"Intro → Verso → Refrão → Verso → Refrão → Tag 2x",
+ s:[["Intro","","D Em/D|D Em/D"],
+ ["Verso","Existe um rio…","D Em/D|D Em/D;G D/F#|G A4 A G/A;D Em/D|Bm7 A4 A;G D/F#|G Em7;A4 A G/B A/C#"],
+ ["Refrão","Quero beber do…","D G D D/F#|G D/F# Em7 A;Bm7 G A|Bm7 F#m7 G;A4 A|G/A D"],
+ ["Tag","Tu és a…","D D4|D D4|Bm A|G A","2x"],
+ ["Fim","","D"]]},
+{t:"Toca em Mim de Novo",a:"Isadora Pompeo",o:"D",sh:-2,u:"isadora-pompeo/toca-em-mim-de-novo",k:3,
+ road:"Intro → Verso → Pré → Refrão → Interlúdio → Verso → Pré → Refrão → Pré → Refrão → Final",
+ s:[["Intro","","D/F# G","2x"],
+ ["Verso","Lembro quando te…","D/F# G|D/F#|G;Bm|G;D/F#|G"],
+ ["Pré","Eu me rendo…","A D/F#|G|A D/F# G","2x"],
+ ["Refrão","Toca em mim…","D|G|Bm7|G;D/F#|G|Bm7|G"],
+ ["Interlúdio / Final","","D/F# D9|G G7M","2x"],
+ ["Fim","","D"]]},
+{t:"Enche-me",a:"Isaías Saad part. Gabriela Rocha",o:"D",sh:-2,u:"isaias-saad/enche-me",k:0,
+ road:"Intro → Verso → Refrão → Verso → Refrão 3x → Ponte → Refrão 4x → Interlúdio → Refrão → Ponte → Refrão",
+ s:[["Intro","","D"],
+ ["Verso","Tu provês o…","Bm D|Bm D|Bm D|G"],
+ ["Refrão","Enche-me, Deus…","Bm|D|A;Bm|G|D|A"],
+ ["Refrão (repetições)","Enche-me, Deus…","Bm|G|D|A","4x"],
+ ["Ponte","Até transbordar…","Bm|G|D|A;Bm|G|D/A|A"],
+ ["Interlúdio","","G D A|Bm G D A"]]}
+];
+const QUARTA=[
+{g:"Devocional",t:"Vem Espírito de Deus",a:"Irmãs Leonel",o:"C",sh:0,u:"irmas-leonel/vem-espirito-de-deus",k:3,
+ road:"Verso → Refrão → Verso 2 → Refrão → Final",
+ s:[["Verso","Aqui eu vim…","C G|C G;C G|C;F G|Em Am;F G|C G"],
+ ["Refrão","Vem, Espírito de…","C|G|F G|C G"],
+ ["Verso 2","Flui, Espírito de…","C G|C G;C G|C;F G|Em Am;F G|C G"],
+ ["Final","O meu coração…","F G|C;F Fm|C"]]},
+{g:"Devocional",t:"Quão Formoso És (Maravilhoso)",a:"Corinhos Evangélicos",o:"C",sh:0,u:"corinhos-evangelicos/maravilhoso-quao-formoso-es",k:3,
+ road:"Parte A 2x → Maravilhoso → Tag → Maravilhoso",
+ s:[["Parte A","Quão formoso és…","C G C|F Dm G;F G|Em Am;F G|C G","2x"],
+ ["Maravilhoso","Maravilhoso é estar…","C G F|Dm F G;Em Am|F G C"],
+ ["Tag","Tua glória enche…","F G|Em Am;F G|C G"]]},
+{g:"Salmos",t:"Teu Toque",a:"Gabi Sampaio (Nívea Soares)",o:"Bb",sh:2,u:"gabi-sampaio/teu-toque",k:3,
+ road:"Intro → Verso → Pré → Refrão → Ô ô → Verso 2 → Pré → Refrão → Ô ô 2x → Ponte → Refrão → Ô ô 2x → Ponte (variação) 2x",
+ s:[["Intro","","Eb F|Gm7 Bb"],
+ ["Verso","Como eu amo…","Eb Gm7|Bb;F Eb|Gm7 Bb;F"],
+ ["Pré","Deus, meu coração…","Eb|Gm7|Bb F"],
+ ["Refrão","Meu prazer é…","Eb F|Gm7|Bb/D","2x"],
+ ["Ô ô","","Eb|F|Gm7|Bb/D"],
+ ["Verso 2","És o fogo…","Eb Gm7|Bb;F Eb|Gm7 Bb;F"],
+ ["Ponte","Eu abro o…","Eb F4|Gm7 Bb/D","2x"],
+ ["Ponte (variação)","Eu abro o…","Gm Am Bb G|Eb Gm F4|Gm7 Bb/D","2x"]]},
+{...SEXTA[7],g:"Salmos",after:"Intercessão"},
+{g:"Adoração",t:"Yahweh Se Manifestará",a:"Marcos Freire part. Julliany Souza e Léo Brandão",o:"E",mi:1,sh:0,u:"marcos-freire/yahweh-se-manifestara-part-julliany-souza-e-leo-brandao",k:7,
+ road:"Refrão → Verso → Refrão 2x → Verso → Refrão 2x → Ponte → Interlúdio → Clamor 4x → Se manifestará 4x → Refrão 2x",
+ s:[["Refrão","Yahweh, Rafah…","C D|B/D# Em G/B;C D|G/B Em","2x"],
+ ["Verso","Sentimos Tua glória…","Em D6|C|D","2x"],
+ ["Ponte","Ele é Yahweh…","Em D6|C|Bm|Em;D6 C|B/D# Em;D6|C|Bm"],
+ ["Interlúdio","","Em D6|C Bm","2x"],
+ ["Clamor","Se adorarmos…","Em|D6|C Bm","4x"],
+ ["Se manifestará","Yahweh se manifestará…","Em|D6|C|Bm","3x"],
+ ["Saída p/ refrão","","Em|D6|C|Am G D"]]},
+{g:"Adoração",t:"Faz Chover",a:"Fernandinho",o:"D",sh:2,u:"fernandinho/faz-chover",k:7,
+ road:"Intro → Verso 2x → Refrão 2x → Solo → Refrão 1 tom acima → Fim",
+ s:[["Intro","","Bm G|D A9","2x"],
+ ["Verso","Assim como a…","D A9 Bm|G D9/F# Em A9;G A9 D9/F# G|D A9","2x"],
+ ["Refrão","Faz chover, Senhor…","Bm G D A9|Bm G A9","4x"],
+ ["Solo / modulação","","Bm G|D A9;Bm G|D A9;G A9"],
+ ["Refrão (+1 tom)","Faz chover, Senhor…","C#m A E B9|C#m A B9","4x"],
+ ["Fim","","C#m"]]},
+{g:"Adoração",t:"A Terra Clama",a:"Gustavo Veríssimo",o:"Bb",sh:6,u:"gustavo-verissimo/a-terra-clama",k:7,
+ road:"Verso → Pré → Refrão (repete à vontade)",
+ s:[["Verso","Deus, oh Deus…","Bb Bb7+|Eb;Bb Bb7+|Eb;Cm7 Gm7|F;Cm7 Gm7|F"],
+ ["Pré","Pois Teu é…","Eb|Gm7 F;Eb|Gm7 F"],
+ ["Refrão","A terra clama…","Eb|Gm7;Eb|F|Gm7"]]},
+{g:"Adoração",t:"Yeshua (Meu Amado É)",a:"José Jr (Five Music)",o:"Eb",sh:1,u:"jose-augusto-five-music/yeshua",k:7,
+ road:"Verso 2x → Refrão 3x → Yeshua → Refrão 2x → Yeshua → Ponte 4x → Yeshua → Ponte",
+ s:[["Verso","A primavera…","Ab Eb|Cm Bb;Ab|Eb|Cm Bb","2x"],
+ ["Refrão","E eu elevo…","Ab|Eb|Cm Bb;Ab|Eb Cm|Bb"],
+ ["Yeshua","Yeshua…","Ab Eb|Cm Bb","2x"],
+ ["Ponte","Digo, oh minha…","Ab Eb|Cm|Bb","4x"]]}
+];
+const TABS={"luma-elpidio/liberta-me-de-mim":["Solo 1","Solo 2"],"quatro-por-um/espirito-enche-minha-vida":["Intro","Interlúdio"],"laura-souguellis/santo-espirito":["Solo"],"florianopolis-house-of-prayer/tu-es-aguas-purificadoras":["Intro","Verso","Pré"],"marcelo-markes/sinto-fluir":["Intro"]};
+const LISTS={quarta:{t:"Sala de Quarta",d:"25/11/26",S:QUARTA},sexta:{t:"Sala de Sexta",d:"20/11/26",S:SEXTA}};
+const NF=["C","Db","D","Eb","E","F","Gb","G","Ab","A","Bb","B"],NS=["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"],I={C:0,"B#":0,"C#":1,Db:1,D:2,"D#":3,Eb:3,E:4,Fb:4,F:5,"E#":5,"F#":6,Gb:6,G:7,"G#":8,Ab:8,A:9,"A#":10,Bb:10,B:11,Cb:11};
 const md=x=>((x%12)+12)%12;
-const $=id=>document.getElementById(id);
-$("chroma").innerHTML=NM.map(()=>"<div></div>").join("");$("names").innerHTML=NM.map(n=>"<span>"+n+"</span>").join("");
-const bars=[...$("chroma").children];
-let ac,an,src,stream,timer,acc=new Array(12).fill(0),listened=0,running=false,wake=null;
-function corr(a,b){const ma=a.reduce((x,y)=>x+y)/12,mb=b.reduce((x,y)=>x+y)/12;let s=0,sa=0,sb=0;for(let i=0;i<12;i++){s+=(a[i]-ma)*(b[i]-mb);sa+=(a[i]-ma)**2;sb+=(b[i]-mb)**2}return s/Math.sqrt(sa*sb||1)}
-function keys(ch){const o=[];for(let t=0;t<12;t++){const r=[...Array(12)].map((_,i)=>ch[md(i+t)]);o.push({t,mi:0,s:corr(r,KMAJ)},{t,mi:1,s:corr(r,KMIN)})}return o.sort((a,b)=>b.s-a.s)}
-const kn=k=>NM[k.t]+(k.mi?"m":"");
-const rel=k=>k.mi?NM[md(k.t+3)]:NM[md(k.t+9)]+"m";
-async function start(){
-  try{
-    ac=new (window.AudioContext||window.webkitAudioContext)();await ac.resume();
-    stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
-  }catch(e){$("sub").textContent="Sem acesso ao microfone. Permita o microfone para este site nos Ajustes do Safari.";return}
-  src=ac.createMediaStreamSource(stream);an=ac.createAnalyser();an.fftSize=16384;an.smoothingTimeConstant=0;src.connect(an);
-  const sr=ac.sampleRate,N=an.fftSize,data=new Float32Array(N/2),td=new Float32Array(N);
-  const bins=[];for(let b=1;b<N/2;b++){const f=b*sr/N;if(f>=80&&f<=2000)bins.push([b,md(Math.round(12*Math.log2(f/440))+9)])}
-  running=true;$("go").textContent="Pausar";
-  try{wake=await navigator.wakeLock?.request("screen")}catch(e){}
-  const dt=0.15;
-  timer=setInterval(()=>{
-    an.getFloatTimeDomainData(td);let rms=0;for(let i=0;i<N;i+=4)rms+=td[i]*td[i];rms=Math.sqrt(rms/(N/4));
-    $("lvl").style.width=Math.min(100,rms*400)+"%";
-    if(rms<0.004)return; // silêncio
-    an.getFloatFrequencyData(data);
-    const fc=new Array(12).fill(0);for(const[b,pc]of bins){const v=data[b];if(v>-90)fc[pc]+=Math.pow(10,v/20)}
-    const s=fc.reduce((a,b)=>a+b)||1;
-    const decay=Math.exp(-dt/(+$("win").value));
-    for(let i=0;i<12;i++)acc[i]=acc[i]*decay+fc[i]/s;
-    listened+=dt;draw();
-  },dt*1000);
+const tn=(n,d,sh)=>{const i=md(I[n]+d);return sh?NS[i]:(i==6?"F#":NF[i])};
+const tr=(c,d,sh)=>c.replace(/(^|\/)([A-G][#b]?)/g,(m,p,n)=>p+tn(n,d,sh));
+const R=["I","bII","II","bIII","III","IV","#IV","V","bVI","VI","bVII","VII"];
+const deg=(c,k)=>c.replace(/(^|\/)([A-G][#b]?)/g,(m,p,n)=>p+R[md(I[n]-I[k])]);
+const MODES=["Acordes","Graus","Ambos"];
+const isCh=w=>/^[A-G][#b]?/.test(w);
+let L="quarta",cur=0,off=0,fs=1,mode=0;
+try{off=+localStorage.getItem("ss-off")||0;fs=+localStorage.getItem("ss-fs")||1;mode=+localStorage.getItem("ss-mode")||0}catch(e){}
+const m=document.getElementById("m"),set=document.getElementById("set"),lists=document.getElementById("lists");
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const sharpOf=(s,d)=>[7,2,9,4,11,6,1].includes(md(I[s.o]+d+(s.mi?3:0)));
+function chip(w,s,d,sh){const c=tr(w,d,sh),g=deg(w,s.o);return '<span class="c">'+esc(mode==1?g:c)+(mode==2?'<small>'+esc(g)+'</small>':'')+'</span>'}
+function line(l,d,s,sh){return '<div class="ln">'+l.split("|").map(b=>'<span class="bar">'+b.trim().split(/\s+/).map(w=>isCh(w)?chip(w,s,d,sh):'<span class="x">'+esc(w)+'</span>').join("")+'</span>').join("")+'</div>'}
+function render(){
+ const Lo=LISTS[L],S=Lo.S,s=S[cur],d=s.sh+off,sh=sharpOf(s,d),key=tn(s.o,d,sh)+(s.mi?"m":"");
+ document.getElementById("ttl").innerHTML=esc(Lo.t)+' <span>· '+Lo.d+'</span>';
+ lists.innerHTML=Object.keys(LISTS).map(k=>'<button class="'+(k==L?"on":"")+'" data-l="'+k+'">'+esc(LISTS[k].t.replace("Sala de ",""))+' '+LISTS[k].d.slice(0,5)+'</button>').join("");
+ let lastG="";
+ set.innerHTML=S.map((x,i)=>{let h="";
+   h+='<button role="tab" aria-selected="'+(i==cur)+'" class="'+(i==cur?"on":"")+'" data-i="'+i+'">'+(i+1)+'. '+esc(x.t)+'</button>';
+   return h}).join("");
+ m.innerHTML='<div class="head"><div style="flex:1 1 300px">'+'<h2>'+esc(s.t)+'</h2><div class="meta">'+esc(s.a)+' · original em '+s.o+(s.mi?"m":"")+'</div></div><div class="tom">Tom <b>'+key+'</b></div></div>'+
+ '<p class="road"><strong>Roteiro:</strong> '+esc(s.road)+'</p><div class="grid">'+
+ s.s.map(([lb,cue,ls,x])=>'<section class="sec"><h3>'+esc(lb)+(cue?' <i>'+esc(cue)+'</i>':'')+(x?'<em>'+x+'</em>':'')+((TABS[s.u]||[]).includes(lb)?'<a class="tb" href="https://www.cifraclub.com.br/'+s.u+'/" target="_blank" rel="noopener" title="Tab no tom original ('+s.o+')">TAB ↗</a>':'')+'</h3>'+
+   (/→/.test(ls)?'<div class="note" style="margin:0">'+esc(ls.replace(/D9/,mode==1?deg("D9",s.o):tr("D9",d,sh)))+'</div>':ls.split(";").map(l=>line(l,d,s,sh)).join(""))+'</section>').join("")+
+ '</div>'+
+ '<div class="riff"><h3>Meus riffs e anotações <span>Escreva ou cole a sua tab aqui; fica salvo neste aparelho.'+(TABS[s.u]?' A tab do Cifra Club está no tom original ('+s.o+(s.mi?'m':'')+').':'')+'</span><button id="cp">Copiar</button></h3><textarea id="nt" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="e|----------------|&#10;B|----------------|&#10;G|----------------|&#10;D|----------------|&#10;A|----------------|&#10;E|----------------|"></textarea></div>'+
+ '<div class="foot"><a href="https://www.cifraclub.com.br/'+s.u+'/#key='+s.k+'" target="_blank" rel="noopener">Abrir cifra completa com letra no Cifra Club ('+esc(key)+') ↗</a></div>'+
+ (off?'<p class="note">Transposição extra ativa: '+(off>0?"+":"")+off*0.5+' tom. <button id="rst">Voltar ao tom do repertório</button></p>':'');
+ m.classList.remove("in");void m.offsetWidth;m.classList.add("in");
+ document.documentElement.style.setProperty("--fs",fs);
+ document.getElementById("mode").textContent=MODES[mode];
+ const p=document.getElementById("prev"),n=document.getElementById("next");
+ p.textContent=cur>0?"‹ "+S[cur-1].t:"‹";p.disabled=cur==0;
+ n.textContent=cur<S.length-1?S[cur+1].t+" ›":"Fim";n.disabled=cur==S.length-1;
+ set.querySelector("button.on")?.scrollIntoView({inline:"center",block:"nearest"});
+ const nt=document.getElementById("nt"),nk="ss-note-"+s.u;try{nt.value=localStorage.getItem(nk)||""}catch(e){}
+ nt.oninput=()=>{try{localStorage.setItem(nk,nt.value)}catch(e){}};
+ document.getElementById("cp").onclick=async e=>{try{await navigator.clipboard.writeText(nt.value);e.target.textContent="Copiado"}catch(_){nt.select()}};
+ const r=document.getElementById("rst");if(r)r.onclick=()=>{off=0;save();render()};
+ const hs="#"+L+"-"+(cur+1);if(location.hash!==hs)history.replaceState(null,"",hs);
 }
-function stop(){running=false;clearInterval(timer);stream?.getTracks().forEach(t=>t.stop());try{ac?.close()}catch(e){}try{wake?.release()}catch(e){}$("go").textContent="Escutar";$("lvl").style.width="0"}
-function draw(){
-  const mx=Math.max(...acc)||1;bars.forEach((b,i)=>b.style.height=(100*acc[i]/mx)+"%");
-  $("time").textContent="ouvindo há "+Math.round(listened)+"s";
-  if(listened<3){$("sub").textContent="Escutando…";return}
-  const k=keys(acc),c=Math.max(0,k[0].s),gap=k[0].s-k[1].s;
-  $("key").textContent=kn(k[0]);
-  $("sub").textContent=(c>.75&&gap>.04?"Bem provável":c>.55?"Provável":"Ainda incerto")+" · relativo: "+rel(k[0]);
-  $("conf").style.width=Math.round(100*c)+"%";
-  $("alt").innerHTML=k.slice(1,3).map(x=>"<span>"+kn(x)+"<small>"+Math.round(100*Math.max(0,x.s))+"%</small></span>").join("");
-}
-$("go").onclick=()=>running?stop():start();
-$("reset").onclick=()=>{acc.fill(0);listened=0;$("key").textContent="–";$("alt").innerHTML="";$("conf").style.width="0";bars.forEach(b=>b.style.height="0");$("sub").textContent=running?"Escutando…":"Toque em “Escutar” e deixe a banda tocar";$("time").textContent=""};
-document.addEventListener("visibilitychange",async()=>{if(running&&document.visibilityState==="visible"){try{wake=await navigator.wakeLock?.request("screen")}catch(e){}}});
+function save(){try{localStorage.setItem("ss-off",off);localStorage.setItem("ss-fs",fs);localStorage.setItem("ss-mode",mode)}catch(e){}}
+function go(i){if(i<0||i>=LISTS[L].S.length)return;cur=i;render();scrollTo(0,0)}
+set.onclick=e=>{const b=e.target.closest("button");if(b){if(kOn)toggleK(false);go(+b.dataset.i)}};
+lists.onclick=e=>{const b=e.target.closest("button");if(b&&b.dataset.l!==L){L=b.dataset.l;cur=0;render();scrollTo(0,0)}};
+document.getElementById("prev").onclick=()=>go(cur-1);
+document.getElementById("next").onclick=()=>go(cur+1);
+document.getElementById("mode").onclick=()=>{mode=(mode+1)%3;save();render()};
+document.getElementById("tUp").onclick=()=>{off++;save();render()};
+document.getElementById("tDn").onclick=()=>{off--;save();render()};
+document.getElementById("fUp").onclick=()=>{fs=Math.min(1.8,+(fs+0.1).toFixed(1));save();render()};
+document.getElementById("fDn").onclick=()=>{fs=Math.max(0.7,+(fs-0.1).toFixed(1));save();render()};
+addEventListener("keydown",e=>{if(kOn||e.target.closest("textarea,input"))return;if(e.key=="ArrowRight")go(cur+1);if(e.key=="ArrowLeft")go(cur-1)});
+let sx=0,sy=0;
+addEventListener("touchstart",e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+addEventListener("touchend",e=>{if(kOn||e.target.closest("textarea,input"))return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)*1.5)go(cur+(dx<0?1:-1))},{passive:true});
+const fromHash=()=>{const h=location.hash.match(/^#(quarta|sexta)-(\d+)$/);if(h){L=h[1];const i=+h[2]-1;if(i>=0&&i<LISTS[L].S.length)cur=i}};
+addEventListener("hashchange",()=>{fromHash();render()});
+// ---------- Identificador de tom ----------
+const K=document.getElementById("k");let kOn=false,kCh=[],kMin=false;
+const KN=i=>NF[md(i)]=="Gb"?"F#":NF[md(i)];
+const kname=(t,mi)=>KN(t)+(mi?"m":"");
+const parseCh=w=>{const r=w.match(/^([A-G][#b]?)(.*)$/);if(!r||I[r[1]]==null)return null;const q=r[2];const min=/^(m(?!aj)|min|-)/.test(q)&&!/^maj/.test(q);const dim=/^(dim|°|º|m7\(b5\)|m7b5)/.test(q);return{r:I[r[1]],q:dim?"d":min?"m":"M",txt:w}};
+const DIA={M:[[0,"M"],[2,"m"],[4,"m"],[5,"M"],[7,"M"],[9,"m"],[11,"d"]],m:[[0,"m"],[2,"d"],[3,"M"],[5,"m"],[7,"m"],[7,"M"],[8,"M"],[10,"M"],[11,"d"]]};
+function scoreKeys(cs){const out=[];for(let t=0;t<12;t++)for(const mo of["M","m"]){let sc=0;cs.forEach((c,i)=>{const iv=md(c.r-t);const ok=DIA[mo].some(([a,q])=>a==iv&&(q==c.q||(c.q=="M"&&q=="M")));
+ if(ok){sc+=1;if(iv==0)sc+=1.5;if(iv==5||iv==7)sc+=.5;if(iv==0&&i==0)sc+=1;if(iv==0&&i==cs.length-1)sc+=1.5}else sc-=1});
+ out.push({t,mi:mo=="m",sc:sc+(mo=="M"?.01:0)})}
+ out.sort((a,b)=>b.sc-a.sc);const mx=out[0].sc||1;return out.slice(0,3).map(o=>({...o,p:Math.max(5,Math.round(100*o.sc/mx))}))}
+const KMAJ=[6.35,2.23,3.48,2.33,4.38,4.09,2.52,5.19,2.39,3.66,2.29,2.88],KMIN=[6.33,2.68,3.52,5.38,2.60,3.53,2.54,4.75,3.98,2.69,3.34,3.17];
+function corr(a,b){const n=12,ma=a.reduce((x,y)=>x+y)/n,mb=b.reduce((x,y)=>x+y)/n;let s=0,sa=0,sb=0;for(let i=0;i<n;i++){s+=(a[i]-ma)*(b[i]-mb);sa+=(a[i]-ma)**2;sb+=(b[i]-mb)**2}return s/Math.sqrt(sa*sb||1)}
+function keysFromChroma(ch){const out=[];for(let t=0;t<12;t++){const rot=[...Array(12)].map((_,i)=>ch[md(i+t)]);out.push({t,mi:false,sc:corr(rot,KMAJ)},{t,mi:true,sc:corr(rot,KMIN)})}out.sort((a,b)=>b.sc-a.sc);return out.slice(0,3).map(o=>({...o,p:Math.max(5,Math.round(100*Math.max(0,o.sc)))}))}
+function fft(re,im){const n=re.length;for(let i=1,j=0;i<n;i++){let b=n>>1;for(;j&b;b>>=1)j^=b;j^=b;if(i<j){[re[i],re[j]]=[re[j],re[i]];[im[i],im[j]]=[im[j],im[i]]}}
+ for(let len=2;len<=n;len<<=1){const a=-2*Math.PI/len,wr=Math.cos(a),wi=Math.sin(a);for(let i=0;i<n;i+=len){let cr=1,ci=0;for(let j=0;j<len/2;j++){const k=i+j,l=k+len/2,tr=re[l]*cr-im[l]*ci,ti=re[l]*ci+im[l]*cr;re[l]=re[k]-tr;im[l]=im[k]-ti;re[k]+=tr;im[k]+=ti;const nr=cr*wr-ci*wi;ci=cr*wi+ci*wr;cr=nr}}}}
+async function analyzeAudio(file,st){
+ st.textContent="Lendo o arquivo…";const AC=window.AudioContext||window.webkitAudioContext;const ac=new AC();
+ const buf=await new Promise((res,rej)=>{file.arrayBuffer().then(ab=>{const p=ac.decodeAudioData(ab,res,rej);if(p&&p.then)p.then(res,rej)},rej)});
+ const sr=buf.sampleRate,len=Math.min(buf.length,Math.floor(sr*150));const x=new Float32Array(len);
+ for(let c=0;c<buf.numberOfChannels;c++){const d=buf.getChannelData(c);for(let i=0;i<len;i++)x[i]+=d[i]/buf.numberOfChannels}
+ const N=8192,ch=new Array(12).fill(0),win=new Float32Array(N).map((_,i)=>.5-.5*Math.cos(2*Math.PI*i/(N-1)));
+ const bins=[];for(let b=1;b<N/2;b++){const f=b*sr/N;if(f<80||f>2000)continue;bins.push([b,md(Math.round(12*Math.log2(f/440))+9)])}
+ const frames=Math.floor((len-N)/(N/2));
+ for(let fr=0;fr<frames;fr++){const re=new Float32Array(N),im=new Float32Array(N),o=fr*N/2;for(let i=0;i<N;i++)re[i]=x[o+i]*win[i];fft(re,im);
+  const fc=new Array(12).fill(0);for(const[b,pc]of bins)fc[pc]+=Math.log1p(10*Math.hypot(re[b],im[b]));const s=fc.reduce((a,b)=>a+b)||1;for(let i=0;i<12;i++)ch[i]+=fc[i]/s;
+  if(fr%25==0){st.textContent="Analisando… "+Math.round(100*fr/frames)+"%";await new Promise(r=>setTimeout(r))}}
+ try{ac.close()}catch(e){}
+ if(!frames)throw new Error("curto");return{ch,secs:Math.round(len/sr)}}
+function resHTML(rs,cs,alt){const S=LISTS[L].S,s=S[cur];return rs.map((r,i)=>{const tonic=KN(r.t),rel=r.mi?kname(r.t+3,false):kname(r.t+9,true);
+ const degs=cs?'<div class="chips">'+cs.map(c=>'<span>'+esc(c.txt)+'<small>'+esc(deg(c.txt,tonic))+'</small></span>').join("")+'</div>':"";
+ const can=!!s.mi==r.mi;
+ return '<div class="rk"><b>'+kname(r.t,r.mi)+'</b><div class="mt"><i style="width:'+r.p+'%"></i></div>'+(i==0&&can&&!alt?'<button data-go="'+r.t+'">Levar “'+esc(s.t)+'” para '+kname(r.t,r.mi)+'</button>':'')+
+ '<small>'+(i==0&&!alt?'Mais provável':'Alternativa')+' · relativo: '+rel+'</small>'+(i==0?degs:'')+'</div>'}).join("")}
+function renderK(){
+ const roots=["C","C#","D","Eb","E","F","F#","G","Ab","A","Bb","B"];
+ K.innerHTML='<div class="head"><div style="flex:1 1 300px"><h2>Qual o tom?</h2><div class="meta">Pelos acordes ou por uma gravação</div></div><button id="kback">‹ Voltar ao repertório</button></div><div class="kt">'+
+ '<section class="sec live"><h3>Ao vivo (microfone)</h3><div class="lkey" id="lkey">'+(live.k||"–")+'</div><div class="meta" id="lsub">'+(live.on?"Escutando…":"Toque em Escutar e deixe a banda tocar")+'</div><div class="res" id="lres" style="text-align:left"></div>'+
+ '<div class="ctl" style="justify-content:center;margin-top:12px;align-items:center"><button class="go" id="lgo">'+(live.on?"Pausar":"Escutar")+'</button><button id="lrst">Recomeçar</button><select id="lwin" class="inp" style="width:auto;min-height:44px"><option value="8">Rápido (8s)</option><option value="20" selected>Normal (20s)</option><option value="45">Estável (45s)</option></select><div class="lvl"><i id="llvl"></i></div><span class="meta" id="ltime"></span></div>'+
+ '<div class="chroma" id="lch">'+NF.map(()=>"<div></div>").join("")+'</div><div class="cnames">'+NF.map(n=>"<span>"+n+"</span>").join("")+'</div></section>'+
+ '<section class="sec"><h3>Pelos acordes</h3><input class="inp" id="kin" placeholder="Ex.: G D Em C" value="'+esc(kCh.join(" "))+'" autocapitalize="characters" autocorrect="off" spellcheck="false">'+
+ '<div class="pad">'+roots.map(r=>'<button class="'+(kMin?"m":"")+'" data-r="'+r+'">'+r+(kMin?"m":"")+'</button>').join("")+'</div>'+
+ '<div class="ctl"><button id="kmin">'+(kMin?"Menores ✓":"Menores")+'</button><button id="kdel">Apagar último</button><button id="kclr">Limpar</button></div><div class="res" id="kres1"></div></section>'+
+ '<section class="sec"><h3>Por áudio</h3><p class="note" style="margin-top:0">Envie uma gravação (Gravador do iPhone/iPad, vídeo do ensaio, MP3). Analiso até 2min30 do início. Funciona melhor com a banda tocando e pouca conversa.</p>'+
+ '<input type="file" id="kfile" accept="audio/*,video/*" class="inp" style="font-size:16px"><p class="note" id="kst"></p><div class="res" id="kres2"></div></section></div>';
+ const upd=()=>{const cs=kCh.map(parseCh).filter(Boolean);document.getElementById("kres1").innerHTML=cs.length>=2?resHTML(scoreKeys(cs),cs):'<p class="note" style="margin:0">Coloque pelo menos 2 acordes, na ordem em que aparecem.</p>';bindGo()};
+ const kin=document.getElementById("kin");kin.oninput=()=>{kCh=kin.value.trim().split(/[\s,|]+/).filter(Boolean);upd()};
+ K.querySelector(".pad").onclick=e=>{const b=e.target.closest("button");if(!b)return;kCh.push(b.dataset.r+(kMin?"m":""));kin.value=kCh.join(" ");upd()};
+ document.getElementById("kmin").onclick=()=>{kMin=!kMin;renderK()};
+ document.getElementById("kdel").onclick=()=>{kCh.pop();kin.value=kCh.join(" ");upd()};
+ document.getElementById("kclr").onclick=()=>{kCh=[];kin.value="";upd()};
+ document.getElementById("kback").onclick=()=>toggleK(false);
+ document.getElementById("lgo").onclick=()=>live.on?liveStop():liveStart();
+ document.getElementById("lrst").onclick=()=>{live.acc.fill(0);live.t=0;live.k="";document.getElementById("lkey").textContent="–";document.getElementById("lres").innerHTML="";document.getElementById("ltime").textContent=""};
+ document.getElementById("lwin").value=live.win;document.getElementById("lwin").onchange=e=>live.win=+e.target.value;
+ document.getElementById("kfile").onchange=async e=>{const f=e.target.files[0];if(!f)return;const st=document.getElementById("kst"),out=document.getElementById("kres2");out.innerHTML="";
+  try{const{ch,secs}=await analyzeAudio(f,st);st.textContent="Analisados "+secs+"s de “"+f.name+"”.";out.innerHTML=resHTML(keysFromChroma(ch));bindGo()}
+  catch(err){st.textContent="Não consegui ler esse arquivo. Tente um .m4a, .mp3 ou .wav."}};
+ upd()}
+function bindGo(){K.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{const s=LISTS[L].S[cur];off=md(+b.dataset.go-(I[s.o]+s.sh));if(off>6)off-=12;save();toggleK(false)})}
+
+const live={on:false,acc:new Array(12).fill(0),t:0,k:"",win:20,ac:null,st:null,tm:null};
+async function liveStart(){const sub=document.getElementById("lsub");
+ if(!navigator.mediaDevices?.getUserMedia){sub.textContent="Este navegador não libera o microfone aqui. Abra pelo Safari no endereço do GitHub.";return}
+ try{live.ac=new (window.AudioContext||window.webkitAudioContext)();await live.ac.resume();
+  live.st=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}})}
+ catch(e){sub.textContent="Sem acesso ao microfone. Permita o microfone para este site (Ajustes › Safari › Microfone).";return}
+ const an=live.ac.createAnalyser();an.fftSize=16384;an.smoothingTimeConstant=0;live.ac.createMediaStreamSource(live.st).connect(an);
+ const sr=live.ac.sampleRate,N=an.fftSize,fd=new Float32Array(N/2),td=new Float32Array(N),bins=[];
+ for(let b=1;b<N/2;b++){const f=b*sr/N;if(f>=80&&f<=2000)bins.push([b,md(Math.round(12*Math.log2(f/440))+9)])}
+ live.on=true;wakeOn();const dt=.15;
+ const g=id=>document.getElementById(id);g("lgo").textContent="Pausar";sub.textContent="Escutando…";
+ live.tm=setInterval(()=>{an.getFloatTimeDomainData(td);let r=0;for(let i=0;i<N;i+=4)r+=td[i]*td[i];r=Math.sqrt(r/(N/4));
+  if(g("llvl"))g("llvl").style.width=Math.min(100,r*400)+"%";if(r<.004)return;
+  an.getFloatFrequencyData(fd);const fc=new Array(12).fill(0);for(const[b,pc]of bins){const v=fd[b];if(v>-90)fc[pc]+=Math.pow(10,v/20)}
+  const sm=fc.reduce((a,b)=>a+b)||1,dc=Math.exp(-dt/live.win);for(let i=0;i<12;i++)live.acc[i]=live.acc[i]*dc+fc[i]/sm;live.t+=dt;
+  if(!kOn||!g("lkey"))return;const mx=Math.max(...live.acc)||1;[...g("lch").children].forEach((d,i)=>d.style.height=(100*live.acc[i]/mx)+"%");
+  g("ltime").textContent=Math.round(live.t)+"s";if(live.t<3)return;
+  const rs=keysFromChroma(live.acc);live.k=kname(rs[0].t,rs[0].mi);g("lkey").textContent=live.k;
+  const gap=rs[0].sc-rs[1].sc;g("lsub").textContent=(rs[0].sc>.75&&gap>.04?"Bem provável":rs[0].sc>.55?"Provável":"Ainda incerto")+" · relativo: "+(rs[0].mi?kname(rs[0].t+3,false):kname(rs[0].t+9,true));
+  if(Math.round(live.t/dt)%7==0){g("lres").innerHTML='<div class="rk" style="justify-content:center"><button data-go="'+rs[0].t+'" '+(!!LISTS[L].S[cur].mi==rs[0].mi?'':'hidden')+'>Levar “'+esc(LISTS[L].S[cur].t)+'” para '+live.k+'</button></div>'+resHTML(rs.slice(1),null,true);bindGo()}
+ },dt*1000)}
+function liveStop(){live.on=false;clearInterval(live.tm);live.st?.getTracks().forEach(t=>t.stop());try{live.ac?.close()}catch(e){}
+ const b=document.getElementById("lgo");if(b)b.textContent="Escutar";const l=document.getElementById("llvl");if(l)l.style.width="0"}
+let wl=null;async function wakeOn(){try{wl=await navigator.wakeLock?.request("screen")}catch(e){}}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")wakeOn()});
+addEventListener("click",()=>{if(!wl)wakeOn()},{once:true});
+function toggleK(on){if(!on&&live.on)liveStop();kOn=on;K.hidden=!on;m.hidden=on;document.querySelector("nav.pg").hidden=on;document.getElementById("kbtn").classList.toggle("on",on);if(on)renderK();else render();scrollTo(0,0)}
+document.getElementById("kbtn").onclick=()=>toggleK(!kOn);
+
+fromHash();render();
 }
 </script>
 </body>
