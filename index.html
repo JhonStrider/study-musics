@@ -72,6 +72,7 @@ main{max-width:1100px;margin:0 auto;padding:18px max(3vw,12px) 120px}
 .chroma div{background:var(--acc);border-radius:4px 4px 0 0;min-height:2px}
 .cnames{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;color:var(--mut);font-size:12px;text-align:center}
 .go{background:var(--ch)!important;color:#1a1206!important;border-color:var(--ch)!important;font-weight:800}
+[hidden]{display:none!important}
 .note{color:var(--mut);font-size:15px;margin-top:14px}
 .foot{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center}
 .foot a{color:var(--acc);font-weight:600;display:inline-flex;align-items:center;min-height:44px}
@@ -328,7 +329,7 @@ function renderK(){
  K.innerHTML='<div class="head"><div style="flex:1 1 300px"><h2>Qual o tom?</h2><div class="meta">Pelos acordes ou por uma gravação</div></div><button id="kback">‹ Voltar ao repertório</button></div><div class="kt">'+
  '<section class="sec live"><h3>Ao vivo (microfone)</h3><div class="lkey" id="lkey">'+(live.k||"–")+'</div><div class="meta" id="lsub">'+(live.on?"Escutando…":"Toque em Escutar e deixe a banda tocar")+'</div><div class="res" id="lres" style="text-align:left"></div>'+
  '<div class="ctl" style="justify-content:center;margin-top:12px;align-items:center"><button class="go" id="lgo">'+(live.on?"Pausar":"Escutar")+'</button><button id="lrst">Recomeçar</button><select id="lwin" class="inp" style="width:auto;min-height:44px"><option value="8">Rápido (8s)</option><option value="20" selected>Normal (20s)</option><option value="45">Estável (45s)</option></select><div class="lvl"><i id="llvl"></i></div><span class="meta" id="ltime"></span></div>'+
- '<div class="chroma" id="lch">'+NF.map(()=>"<div></div>").join("")+'</div><div class="cnames">'+NF.map(n=>"<span>"+n+"</span>").join("")+'</div></section>'+
+ '<div class="chroma" id="lch">'+NF.map(()=>"<div></div>").join("")+'</div><div class="cnames">'+NF.map(n=>"<span>"+(n=="Gb"?"F#":n)+"</span>").join("")+'</div></section>'+
  '<section class="sec"><h3>Pelos acordes</h3><input class="inp" id="kin" placeholder="Ex.: G D Em C" value="'+esc(kCh.join(" "))+'" autocapitalize="characters" autocorrect="off" spellcheck="false">'+
  '<div class="pad">'+roots.map(r=>'<button class="'+(kMin?"m":"")+'" data-r="'+r+'">'+r+(kMin?"m":"")+'</button>').join("")+'</div>'+
  '<div class="ctl"><button id="kmin">'+(kMin?"Menores ✓":"Menores")+'</button><button id="kdel">Apagar último</button><button id="kclr">Limpar</button></div><div class="res" id="kres1"></div></section>'+
