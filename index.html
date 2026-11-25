@@ -177,12 +177,16 @@ const SEXTA=[
  ["Interlúdio","","G D A|Bm G D A"]]}
 ];
 const QUARTA=[
-{g:"Devocional",t:"Vem Espírito de Deus",a:"Irmãs Leonel",o:"C",sh:0,u:"irmas-leonel/vem-espirito-de-deus",k:3,
- road:"Verso → Refrão → Verso 2 → Refrão → Final",
- s:[["Verso","Aqui eu vim…","C G|C G;C G|C;F G|Em Am;F G|C G"],
- ["Refrão","Vem, Espírito de…","C|G|F G|C G"],
- ["Verso 2","Flui, Espírito de…","C G|C G;C G|C;F G|Em Am;F G|C G"],
- ["Final","O meu coração…","F G|C;F Fm|C"]]},
+{g:"Devocional",t:"Vem, Espírito de Deus",a:"Bruna Olly",o:"E",sh:-4,sp:1,u:"bruna-olly/vem-espirito-de-deus",k:3,
+ road:"Verso → Refrão → Verso 2 → Refrão → Interlúdio → Ponte → Refrão (+1 tom) → Passagem → Final",
+ s:[["Verso","Aqui eu vim…","A B/D#|E;A B/D#|C#m7;F#m B/D#|C#m7;A B|E"],
+ ["Refrão","Vem, Espírito de…","A/C# B/D#|E;G#m;A B|E"],
+ ["Verso 2","Flui, Espírito de…","A B/D#|E;A B/D#|E;A B/D#;G# G#/C|C#m B;A B|E"],
+ ["Interlúdio","","E G#m7|A9","2x"],
+ ["Ponte","Oh, oh…","E G#m|A;F#/A# A#m7|B9"],
+ ["Refrão (+1 tom)","Vem, Espírito de…","F#;A#m;B C#|F#"],
+ ["Passagem","","B/D# C#/F|F#/A# A#|G# F#|C#"],
+ ["Final","Vem, Espírito de…","A#m;B C#|D#m;B C#|F#"]]},
 {g:"Devocional",t:"Quão Formoso És (Maravilhoso)",a:"Corinhos Evangélicos",o:"C",sh:0,u:"corinhos-evangelicos/maravilhoso-quao-formoso-es",k:3,
  road:"Parte A 2x → Maravilhoso → Tag → Maravilhoso",
  s:[["Parte A","Quão formoso és…","C G C|F Dm G;F G|Em Am;F G|C G","2x"],
@@ -242,7 +246,7 @@ let L="quarta",cur=0,off=0,fs=1,mode=0;
 try{off=+localStorage.getItem("ss-off")||0;fs=+localStorage.getItem("ss-fs")||1;mode=+localStorage.getItem("ss-mode")||0}catch(e){}
 const m=document.getElementById("m"),set=document.getElementById("set"),lists=document.getElementById("lists");
 const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-const sharpOf=(s,d)=>[7,2,9,4,11,6,1].includes(md(I[s.o]+d+(s.mi?3:0)));
+const sharpOf=(s,d)=>s.sp?true:[7,2,9,4,11,6,1].includes(md(I[s.o]+d+(s.mi?3:0)));
 function chip(w,s,d,sh){const c=tr(w,d,sh),g=deg(w,s.o);return '<span class="c">'+esc(mode==1?g:c)+(mode==2?'<small>'+esc(g)+'</small>':'')+'</span>'}
 function line(l,d,s,sh){return '<div class="ln">'+l.split("|").map(b=>'<span class="bar">'+b.trim().split(/\s+/).map(w=>isCh(w)?chip(w,s,d,sh):'<span class="x">'+esc(w)+'</span>').join("")+'</span>').join("")+'</div>'}
 function render(){
