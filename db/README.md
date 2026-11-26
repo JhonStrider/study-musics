@@ -34,6 +34,7 @@ Para mudar um repertório ou corrigir uma música, edite o JSON e faça o commit
 
 - A chave (`vem-espirito-de-deus`) é o **id** da música. É ele que os repertórios usam.
 - `tom` é o tom original da cifra. Em música menor, termina com `m` (ex.: `"Em"`), e o grau `I` é a tônica menor.
+- `graus` pode trazer o **tempo estimado** de cada acorde: `IV7M/I~4 I~4` quer dizer que cada acorde ocupa metade da linha (cada linha soma 8). `_` no começo da linha indica que a frase começa ainda no acorde anterior (anacruse). O tempo é calculado pela posição dos acordes sobre as sílabas na cifra do Cifra Club, então é uma aproximação. Para corrigir, basta mudar os números.
 - `graus` guarda a harmonia em graus relativos ao `tom`: `I`, `IIm`, `IV7M(9)`, `bVII`, `#IV`, `V/VII` (baixo no VII). ` | ` separa compassos e ` ; ` separa linhas. O app transforma em acordes no tom que for pedido.
 - Campos opcionais:
   - `nomeOficial`: quando o nome que o grupo usa é diferente do nome da gravação.

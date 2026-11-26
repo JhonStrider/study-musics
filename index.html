@@ -32,6 +32,13 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px so
 .card b{font:700 18px/1.2 Archivo}.card span{color:var(--mut);font-size:14px}.card .row{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;align-items:center}
 .card i{font-style:normal;font-size:13px;color:var(--mut)}.card i.k{font:700 16px "Archivo Narrow";color:var(--ch);background:var(--chbg);border-radius:6px;padding:0 8px}
 .played{margin-top:18px}.played h3{font:700 15px Archivo;color:var(--mut);margin:0 0 6px}.chips2{display:flex;flex-wrap:wrap;gap:6px}.chips2 button{font-size:14px;min-height:40px}.chips2 b{color:var(--ch)}
+.ln.tl{flex-wrap:nowrap;gap:0;align-items:stretch;margin:6px 0}
+.tc{flex-basis:0;min-width:max-content;border-left:2px solid var(--line);padding:0 10px 0 6px;display:flex;align-items:center}
+.tc.ps{border-left-style:dotted}.tc.ps .c{font-size:calc(16px*var(--fs));opacity:.8}
+.pk{color:var(--mut);font:600 calc(16px*var(--fs)) Archivo;padding:0 6px 0 0;display:flex;align-items:center}
+.legend{font-size:13px;color:var(--mut);margin:-4px 0 10px;display:flex;gap:6px 14px;flex-wrap:wrap;align-items:center}
+.legend .lg1{display:inline-block;width:46px;height:10px;border-left:2px solid var(--line);border-bottom:2px solid var(--line)}
+.legend .lg2{font:700 13px "Archivo Narrow";color:var(--ch);opacity:.8;border-left:2px dotted var(--line);padding-left:4px}
 
 .top h1 span{font-weight:400;color:var(--mut)}
 .ctl{display:flex;gap:6px;flex-wrap:wrap}
@@ -152,7 +159,14 @@ const kn=(s,d)=>s.o?tn(s.o,d,sharpOf(s,d))+(s.mi?"m":""):"–";
 // música em foco (repertório ou banco)
 function CS(){if(view=="bank"||view=="song"){return{s:BANK[bid],sh:0,key:null}}const L=SETS[li],x=L.S[cur],s=BANK[x.b];return{s,sh:shOf(s,x.k),key:x.k,g:x.g}}
 function chip(w,s,d,sh){const c=fromDeg(w,s.o,d,sh),g=w;return '<span class="c">'+esc(mode==1?g:c)+(mode==2?'<small>'+esc(g)+'</small>':'')+'</span>'}
-function line(l,d,s,sh){return '<div class="ln">'+l.split("|").map(b=>'<span class="bar">'+b.trim().split(/\s+/).map(w=>isCh(w)?chip(w,s,d,sh):'<span class="x">'+esc(w)+'</span>').join("")+'</span>').join("")+'</div>'}
+// linha com tempo estimado: "IV~4 I~2 V/VII~2" (largura = duração relativa), "_" = frase começa no acorde anterior
+function isPass(it,i){const x=it[i];if(!x.w||x.w>2)return false;const p=it.slice(0,i).reverse().find(y=>y.w),n=it.slice(i+1).find(y=>y.w);
+ if(!p&&!n)return false;const tr=/\/|4|sus|°|º|dim|7$/.test(x.c);return tr&&((p&&p.w>=2*x.w)||(n&&n.w>=2*x.w))}
+function line(l,d,s,sh){const tk=l.trim().split(/\s+/);
+ if(tk.some(t=>/~\d+$/.test(t))){const it=tk.map(t=>{const r=t.match(/^(.*)~(\d+)$/);return r?{c:r[1],w:+r[2]}:{c:t,w:0}});
+  return '<div class="ln tl">'+it.map((x,i)=>x.c=="_"?'<span class="pk" title="A frase começa ainda no acorde anterior">↷</span>':!x.w?'<span class="x">'+esc(x.c)+'</span>':
+   (ps=>'<span class="tc'+(ps?' ps':'')+'" style="flex-grow:'+(ps?x.w:Math.max(x.w,2))+'">')(isPass(it,i))+chip(x.c,s,d,sh)+'</span>').join("")+'</div>'}
+ return '<div class="ln">'+l.split("|").map(b=>'<span class="bar">'+b.trim().split(/\s+/).map(w=>isCh(w)?chip(w,s,d,sh):'<span class="x">'+esc(w)+'</span>').join("")+'</span>').join("")+'</div>'}
 const pname=L=>L.g+" "+L.d.slice(0,5);
 function song(s,base){
  const d=base+off,sh=s.o?sharpOf(s,d):false,key=kn(s,d);
@@ -161,7 +175,7 @@ function song(s,base){
  if(s.pn)h+='<p class="note warnt">'+esc(s.pn)+'</p>';
  if(!s.s){h+='<p class="note">Ainda não tenho o mapa de acordes desta música.</p><div class="foot">'+(s.u?'<a href="https://www.cifraclub.com.br/'+s.u+'/" target="_blank" rel="noopener">Abrir no Cifra Club ↗</a>':'<a href="https://www.cifraclub.com.br/?q='+encodeURIComponent(s.n||s.t)+'" target="_blank" rel="noopener">Procurar no Cifra Club ↗</a>')+'<a href="https://www.youtube.com/results?search_query='+encodeURIComponent((s.n||s.t)+" "+(s.a||""))+'" target="_blank" rel="noopener">Procurar no YouTube ↗</a></div>'}
  else{
- h+=(s.road?'<p class="road"><strong>Roteiro:</strong> '+esc(s.road)+'</p>':'')+'<div class="grid">'+
+ h+=(s.road?'<p class="road"><strong>Roteiro:</strong> '+esc(s.road)+'</p>':'')+(/~\d/.test(JSON.stringify(s.s))?'<p class="legend"><span class="lg1"></span> largura ≈ tempo do acorde <span class="lg2">G/B</span> passagem rápida <b>↷</b> a frase começa no acorde anterior</p>':'')+'<div class="grid">'+
  s.s.map(([lb,cue,ls,x])=>'<section class="sec"><h3>'+esc(lb)+(cue?' <i>'+esc(cue)+'</i>':'')+(x?'<em>'+x+'</em>':'')+((s.tb||[]).includes(lb)?'<a class="tb" href="https://www.cifraclub.com.br/'+s.u+'/" target="_blank" rel="noopener" title="Tab no tom original ('+s.o+')">TAB ↗</a>':'')+'</h3>'+
    (/→/.test(ls)?'<div class="note" style="margin:0">'+esc(ls.replace(/(\S+)$/,w=>isCh(w)&&mode!=1?fromDeg(w,s.o,d,sh):w))+'</div>':ls.split(";").map(l=>line(l,d,s,sh)).join(""))+'</section>').join("")+'</div>'+
  '<div class="riff"><h3>Meus riffs e anotações <span>Escreva ou cole a sua tab aqui; fica salvo neste aparelho.'+(s.tb&&s.tb.length?' A tab do Cifra Club está no tom original ('+s.o+(s.mi?'m':'')+').':'')+'</span><button id="cp">Copiar</button></h3><textarea id="nt" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="e|----------------|&#10;B|----------------|&#10;G|----------------|&#10;D|----------------|&#10;A|----------------|&#10;E|----------------|"></textarea></div>'+
