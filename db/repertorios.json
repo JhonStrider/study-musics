@@ -1,0 +1,1686 @@
+{
+ "versao": 1,
+ "atualizado": "2026-11-26",
+ "sobre": "Repertórios por data. 'musica' é o id em musicas.json; 'tom' é o tom tocado naquele dia (vazio = tom original).",
+ "repertorios": [
+  {
+   "id": "2026-11-25-quarta",
+   "sala": "Quarta",
+   "data": "2026-11-25",
+   "musicas": [
+    {
+     "musica": "vem-espirito-de-deus",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "quao-formoso-es",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "teu-toque",
+     "tom": "C",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "toca-em-mim-de-novo",
+     "tom": "C",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "yahweh-se-manifestara",
+     "tom": "Em",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "faz-chover",
+     "tom": "E",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "a-terra-clama",
+     "tom": "E",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "yeshua",
+     "tom": "E",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-11-20-sexta",
+   "sala": "Sexta",
+   "data": "2026-11-20",
+   "musicas": [
+    {
+     "musica": "liberta-me-de-mim",
+     "tom": "C"
+    },
+    {
+     "musica": "leva-me-alem",
+     "tom": "C"
+    },
+    {
+     "musica": "espirito-enche-a-minha-vida",
+     "tom": "C"
+    },
+    {
+     "musica": "santo-espirito",
+     "tom": "C"
+    },
+    {
+     "musica": "tu-es-fhop",
+     "tom": "C"
+    },
+    {
+     "musica": "sinto-fluir",
+     "tom": "C"
+    },
+    {
+     "musica": "aguas-purificadoras",
+     "tom": "C"
+    },
+    {
+     "musica": "toca-em-mim-de-novo",
+     "tom": "C"
+    },
+    {
+     "musica": "enche-me",
+     "tom": "C"
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-quarta",
+   "sala": "Quarta",
+   "data": "2026-11-18",
+   "musicas": [
+    {
+     "musica": "atrai-o-meu-coracao",
+     "tom": "Bb",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "espirito-santo-estas-aqui",
+     "tom": "Bb",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "eu-nao-posso-viver-sem-ti",
+     "tom": "Bb",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "como-prometeste",
+     "tom": "Bb",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "tu-es-fhop",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "digno-e-o-senhor",
+     "tom": "A",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "te-damos-louvor",
+     "tom": "A",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "a-honra-a-gloria-a-forca",
+     "tom": "A",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "porque-ele-vive",
+     "tom": "A",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-11-13-sexta",
+   "sala": "Sexta",
+   "data": "2026-11-13",
+   "musicas": [
+    {
+     "musica": "toma-o-teu-lugar-make-room",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "me-esvaziar",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "refinador-refiner",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "como-eu-te-amo",
+     "tom": "F",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "preciso-de-ti-distante-de-ti-senhor",
+     "tom": "F",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "se-eu-me-humilhar",
+     "tom": "F",
+     "bloco": "Após intercessão"
+    },
+    {
+     "musica": "olha-pra-mim-eu-farei-o-que-for-preciso",
+     "tom": "F",
+     "bloco": "Após intercessão"
+    },
+    {
+     "musica": "atos-2",
+     "tom": "D",
+     "bloco": "Louvor final"
+    },
+    {
+     "musica": "ele-e-exaltado",
+     "tom": "D",
+     "bloco": "Louvor final"
+    },
+    {
+     "musica": "eu-nao-posso-viver-sem-ti",
+     "bloco": "Extras"
+    },
+    {
+     "musica": "jesus-eu-vim-correndo-te-encontrar",
+     "bloco": "Extras"
+    },
+    {
+     "musica": "jesus-meu-primeiro-amor",
+     "bloco": "Extras"
+    },
+    {
+     "musica": "rendido-estou",
+     "tom": "F",
+     "bloco": "Extras"
+    }
+   ]
+  },
+  {
+   "id": "2026-11-06-sexta",
+   "sala": "Sexta",
+   "data": "2026-11-06",
+   "musicas": [
+    {
+     "musica": "tudo-novo",
+     "tom": "B",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "gratitude",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "quem-dizes-que-eu-sou",
+     "bloco": "Louvor"
+    },
+    {
+     "musica": "que-se-abram-os-ceus",
+     "bloco": "Louvor pós oração"
+    },
+    {
+     "musica": "vou-te-alegrar",
+     "tom": "B",
+     "bloco": "Adoração final"
+    },
+    {
+     "musica": "teu-toque",
+     "bloco": "Adoração final"
+    },
+    {
+     "musica": "sou-grato-por-seu-amor",
+     "tom": "B",
+     "bloco": "Adoração final"
+    }
+   ]
+  },
+  {
+   "id": "2026-11-04-quarta",
+   "sala": "Quarta",
+   "data": "2026-11-04",
+   "musicas": [
+    {
+     "musica": "eu-jamais-serei-o-mesmo",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "just-one-look",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "refinador-refiner",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "preciso-de-ti-distante-de-ti-senhor",
+     "tom": "D",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "gratitude",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "toda-terra",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "atos-2",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "ele-e-o-senhor",
+     "tom": "D",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-10-28-quarta",
+   "sala": "Quarta",
+   "data": "2026-10-28",
+   "musicas": [
+    {
+     "musica": "meu-universo",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "jesus-seja-o-centro",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "te-conhecer",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "uma-vez",
+     "tom": "C",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "ate-que-nada-mais-importe",
+     "tom": "C",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "outro-igual-nao-ha",
+     "tom": "F",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "que-se-abram-os-ceus",
+     "tom": "F",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "vitorioso-es",
+     "tom": "F",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "digno-de-tudo-worthy-te-exaltamos",
+     "tom": "F",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-10-23-sexta",
+   "sala": "Sexta",
+   "data": "2026-10-23",
+   "musicas": [
+    {
+     "musica": "quero-ser-como-crianca",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "vaidade",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "vai-valer-a-pena",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "meu-abrigo",
+     "tom": "D",
+     "bloco": "Louvor"
+    },
+    {
+     "musica": "minhas-guerras",
+     "tom": "D",
+     "bloco": "Louvor pós oração"
+    },
+    {
+     "musica": "soberano-tu-es-mncs",
+     "tom": "D",
+     "bloco": "Adoração final"
+    },
+    {
+     "musica": "te-damos-louvor",
+     "tom": "D",
+     "bloco": "Adoração final"
+    },
+    {
+     "musica": "nada-vai-roubar-tua-gloria",
+     "tom": "D",
+     "bloco": "Adoração final"
+    },
+    {
+     "musica": "a-honra-a-gloria-a-forca",
+     "tom": "D",
+     "bloco": "Adoração final"
+    }
+   ]
+  },
+  {
+   "id": "2026-10-20-quarta",
+   "sala": "Quarta",
+   "data": "2026-10-20",
+   "musicas": [
+    {
+     "musica": "tu-es-soberano",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "se-ele-veste-os-lirios",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "eu-vou-construir",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "oceanos-santo-espirito-me-leve-a-confiar",
+     "tom": "C",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "jesus-nome-sobre-todo-nome",
+     "tom": "E",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "teu-nome-e-o-mais-alto",
+     "tom": "E",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "aleluia-ele-venceu",
+     "tom": "E",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "porque-ele-vive",
+     "tom": "E",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-10-14-quarta",
+   "sala": "Quarta",
+   "data": "2026-10-14",
+   "musicas": [
+    {
+     "musica": "meu-universo",
+     "tom": "G",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "tua-presenca-entre-no-quarto",
+     "tom": "G",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "tudo-e-perda",
+     "tom": "G",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "uma-vez",
+     "tom": "G",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "doce-presenca",
+     "tom": "G",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "digno-e-o-senhor",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "pra-sempre",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "aleluia-ele-venceu",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "a-honra-a-gloria-a-forca",
+     "tom": "D",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-10-09-sexta",
+   "sala": "Sexta",
+   "data": "2026-10-09",
+   "musicas": [
+    {
+     "musica": "deseable",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "o-seu-amor-por-mim",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "me-ama",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "tu-es-bom",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "tao-bom-pra-mim-been-so-good",
+     "tom": "D",
+     "bloco": "Louvor"
+    },
+    {
+     "musica": "bondade-de-deus",
+     "tom": "D",
+     "bloco": "Louvor"
+    },
+    {
+     "musica": "sou-grato-por-seu-amor",
+     "tom": "C",
+     "bloco": "Louvor pós oração"
+    },
+    {
+     "musica": "rei-do-meu-coracao",
+     "tom": "C",
+     "bloco": "Louvor pós oração"
+    },
+    {
+     "musica": "jesus-be-the-name",
+     "tom": "C",
+     "bloco": "Adoração final"
+    },
+    {
+     "musica": "oh-quao-lindo-esse-nome-e",
+     "tom": "C",
+     "bloco": "Adoração final"
+    },
+    {
+     "musica": "digno-de-tudo-worthy-te-exaltamos",
+     "tom": "C",
+     "bloco": "Adoração final"
+    }
+   ]
+  },
+  {
+   "id": "2026-10-07-quarta",
+   "sala": "Quarta",
+   "data": "2026-10-07",
+   "musicas": [
+    {
+     "musica": "tu-es-bom",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "novo-dia",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "tao-bom-pra-mim-been-so-good",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "bondade-de-deus",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "estarei-com-maos-levantadas",
+     "tom": "D",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "correrei",
+     "tom": "Bb",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "toda-terra",
+     "tom": "Bb",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "digno-e-o-senhor",
+     "tom": "Bb",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-10-02-sexta",
+   "sala": "Sexta",
+   "data": "2026-10-02",
+   "musicas": [
+    {
+     "musica": "santo-e-ungido",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "nada-mais",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "essencia-da-adoracao",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "jesus-meu-primeiro-amor",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "teu-toque",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "te-conhecer",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "deixa-queimar",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "uma-vez",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "deus-de-promessas",
+     "tom": "F",
+     "bloco": "Fé / perseverança"
+    },
+    {
+     "musica": "deus-de-obras-completas",
+     "tom": "F",
+     "bloco": "Fé / perseverança"
+    },
+    {
+     "musica": "os-sonhos-de-deus",
+     "bloco": "Fé / perseverança"
+    },
+    {
+     "musica": "jesus-be-the-name",
+     "tom": "C",
+     "bloco": "Louvor final"
+    },
+    {
+     "musica": "digno-de-tudo-worthy-te-exaltamos",
+     "tom": "C",
+     "bloco": "Louvor final"
+    }
+   ]
+  },
+  {
+   "id": "2026-09-30-quarta",
+   "sala": "Quarta",
+   "data": "2026-09-30",
+   "musicas": [
+    {
+     "musica": "nao-ha-outro",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "vai-valer-a-pena",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "deixa-queimar",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "dia-e-noite",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "sublime",
+     "tom": "D",
+     "bloco": "Salmos"
+    },
+    {
+     "musica": "battle-belongs",
+     "tom": "C",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "o-medo-nao-vai-me-parar",
+     "tom": "C",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "nao-seremos-abalados",
+     "tom": "C",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "porque-ele-vive",
+     "tom": "C",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-09-25-sexta",
+   "sala": "Sexta",
+   "data": "2026-09-25",
+   "musicas": [
+    {
+     "musica": "nao-ha-outro",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "sua-presenca-e-tudo-pra-mim",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "santo-e-ungido",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "te-conhecer",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "confio-em-deus-trust-in-god",
+     "tom": "D",
+     "bloco": "Salmos louvor"
+    },
+    {
+     "musica": "sobre-as-aguas",
+     "tom": "D",
+     "bloco": "Salmos louvor"
+    },
+    {
+     "musica": "gratitude",
+     "tom": "D",
+     "bloco": "Salmos louvor"
+    },
+    {
+     "musica": "ele-e-deus-what-a-god",
+     "tom": "F",
+     "bloco": "Louvor final"
+    },
+    {
+     "musica": "quao-grande-e-o-meu-deus",
+     "tom": "F",
+     "bloco": "Louvor final"
+    },
+    {
+     "musica": "vitorioso-es",
+     "tom": "F",
+     "bloco": "Louvor final"
+    }
+   ]
+  },
+  {
+   "id": "2026-09-19-geral",
+   "sala": "Geral",
+   "data": "2026-09-19",
+   "musicas": [
+    {
+     "musica": "todas-as-coisas",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "o-que-seria-de-mim",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "deus-provera",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "sobre-as-aguas",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "jeova-jireh",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "nao-ha-ferrolhos",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "sou-um-milagre",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "vitorioso-es",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "grande-e-o-senhor",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "alem-do-impossivel"
+    },
+    {
+     "musica": "em-teus-bracos"
+    },
+    {
+     "musica": "deus-de-obras-completas"
+    },
+    {
+     "musica": "o-nome-dele"
+    },
+    {
+     "musica": "a-fe"
+    },
+    {
+     "musica": "sou-grato-por-seu-amor"
+    },
+    {
+     "musica": "mil-graus"
+    },
+    {
+     "musica": "oh-meu-irmaozinho"
+    },
+    {
+     "musica": "e-proibido"
+    },
+    {
+     "musica": "diante-de-ti"
+    }
+   ]
+  },
+  {
+   "id": "2026-09-11-sexta",
+   "sala": "Sexta",
+   "data": "2026-09-11",
+   "musicas": [
+    {
+     "musica": "tu-es-soberano",
+     "tom": "B"
+    },
+    {
+     "musica": "ao-unico",
+     "tom": "B"
+    },
+    {
+     "musica": "rendido-estou",
+     "tom": "B"
+    },
+    {
+     "musica": "senhor-e-rei",
+     "tom": "D"
+    },
+    {
+     "musica": "na-minha-vida-so-tem-um-senhor",
+     "tom": "D"
+    },
+    {
+     "musica": "eu-vou-construir",
+     "tom": "D"
+    },
+    {
+     "musica": "soberano-tu-es-mncs",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "so-tu-es-rei",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "outro-igual-nao-ha",
+     "tom": "D",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-09-04-sexta",
+   "sala": "Sexta",
+   "data": "2026-09-04",
+   "musicas": [
+    {
+     "musica": "senhor-formoso-es",
+     "tom": "A",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "jesus-seja-o-centro",
+     "tom": "A",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "vou-te-alegrar",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "pra-te-adorar-oh-rei-dos-reis",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "toda-terra",
+     "tom": "C",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "i-speak-jesus",
+     "tom": "C",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "ha-poder-no-nome-de-jesus",
+     "tom": "C",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "nao-seremos-abalados",
+     "bloco": "Extra"
+    }
+   ]
+  },
+  {
+   "id": "2026-08-13-sexta",
+   "sala": "Sexta",
+   "data": "2026-08-13",
+   "musicas": [
+    {
+     "musica": "abraca-me",
+     "tom": "C"
+    },
+    {
+     "musica": "senhor-te-amo-ton-molinari",
+     "tom": "C"
+    },
+    {
+     "musica": "abba-eu-pertenco-a-ti",
+     "tom": "C"
+    },
+    {
+     "musica": "em-teus-bracos",
+     "tom": "C"
+    },
+    {
+     "musica": "o-pai-me-adotou",
+     "tom": "C"
+    },
+    {
+     "musica": "correrei",
+     "tom": "C"
+    },
+    {
+     "musica": "vou-olhar-em-teus-olhos",
+     "tom": "C"
+    },
+    {
+     "musica": "ate-que-nada-mais-importe",
+     "tom": "C",
+     "bloco": "Após intercessão"
+    },
+    {
+     "musica": "te-amo-jesus",
+     "tom": "C",
+     "bloco": "Após intercessão"
+    },
+    {
+     "musica": "com-todo-o-meu-coracao",
+     "tom": "C",
+     "bloco": "Após intercessão"
+    }
+   ]
+  },
+  {
+   "id": "2026-08-07-sexta",
+   "sala": "Sexta",
+   "data": "2026-08-07",
+   "musicas": [
+    {
+     "musica": "nothing-else",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "em-tua-presenca-santo-espirito-eu-me-rendo",
+     "tom": "F",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "ao-unico",
+     "tom": "F",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "poderoso-deus",
+     "tom": "F",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "maior-prazer",
+     "tom": "F",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "ao-que-esta-assentado",
+     "tom": "C#",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "nada-vai-roubar-tua-gloria",
+     "tom": "C#",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "digno-de-tudo-worthy-te-exaltamos",
+     "tom": "C#",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "a-honra-a-gloria-a-forca",
+     "tom": "C#",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-07-31-sexta",
+   "sala": "Sexta",
+   "data": "2026-07-31",
+   "musicas": [
+    {
+     "musica": "deseable",
+     "tom": "C"
+    },
+    {
+     "musica": "uma-coisa-peco-ao-senhor",
+     "tom": "F"
+    },
+    {
+     "musica": "tua-graca-me-basta",
+     "tom": "F"
+    },
+    {
+     "musica": "me-aproximou",
+     "tom": "F"
+    },
+    {
+     "musica": "quem-e-esse",
+     "tom": "F"
+    },
+    {
+     "musica": "o-que-seria-de-nos",
+     "tom": "F"
+    },
+    {
+     "musica": "diante-da-cruz",
+     "tom": "C",
+     "bloco": "Após intercessão"
+    },
+    {
+     "musica": "sou-grato-por-seu-amor",
+     "tom": "C",
+     "bloco": "Após intercessão"
+    },
+    {
+     "musica": "bondade-de-deus",
+     "tom": "C",
+     "bloco": "Após intercessão"
+    },
+    {
+     "musica": "jesus-filho-de-deus",
+     "tom": "C",
+     "bloco": "Após intercessão"
+    }
+   ]
+  },
+  {
+   "id": "2026-07-24-sexta",
+   "sala": "Sexta",
+   "data": "2026-07-24",
+   "musicas": [
+    {
+     "musica": "este-e-o-meu-respirar",
+     "tom": "D"
+    },
+    {
+     "musica": "deseable",
+     "tom": "D"
+    },
+    {
+     "musica": "tua-presenca-entre-no-quarto",
+     "tom": "D"
+    },
+    {
+     "musica": "lindo-momento",
+     "tom": "D"
+    },
+    {
+     "musica": "preciso-de-ti-distante-de-ti-senhor",
+     "tom": "D"
+    },
+    {
+     "musica": "eu-so-quero-tua-presenca",
+     "tom": "D"
+    },
+    {
+     "musica": "quero-jesus",
+     "tom": "D"
+    },
+    {
+     "musica": "quem-e-esse",
+     "tom": "F",
+     "bloco": "Outras"
+    },
+    {
+     "musica": "que-ele-cresca",
+     "tom": "F",
+     "bloco": "Outras"
+    },
+    {
+     "musica": "teu-toque",
+     "bloco": "Outras"
+    },
+    {
+     "musica": "lugar-secreto",
+     "tom": "F",
+     "bloco": "Outras"
+    },
+    {
+     "musica": "i-see-heaven",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "soberano-tu-es-mncs",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "so-tu-es-rei",
+     "tom": "D",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-07-17-sexta",
+   "sala": "Sexta",
+   "data": "2026-07-17",
+   "musicas": [
+    {
+     "musica": "vaidade",
+     "tom": "C"
+    },
+    {
+     "musica": "te-conhecer",
+     "tom": "C"
+    },
+    {
+     "musica": "tudo-e-perda",
+     "tom": "C"
+    },
+    {
+     "musica": "tua-graca-me-basta"
+    },
+    {
+     "musica": "maior-prazer"
+    },
+    {
+     "musica": "uma-vez"
+    },
+    {
+     "musica": "quero-jesus"
+    },
+    {
+     "musica": "correrei",
+     "tom": "C",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "ao-que-esta-assentado",
+     "tom": "C",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "nada-vai-roubar-tua-gloria",
+     "tom": "C",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "dele-por-ele-mncs",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "a-ele-a-gloria",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-07-10-sexta",
+   "sala": "Sexta",
+   "data": "2026-07-10",
+   "musicas": [
+    {
+     "musica": "abba-eu-pertenco-a-ti",
+     "tom": "C"
+    },
+    {
+     "musica": "em-teus-bracos",
+     "tom": "C"
+    },
+    {
+     "musica": "senhor-te-amo-ton-molinari",
+     "tom": "C"
+    },
+    {
+     "musica": "a-paz-e-uma-promessa",
+     "tom": "G"
+    },
+    {
+     "musica": "tremble",
+     "tom": "G"
+    },
+    {
+     "musica": "nao-mais-escravos",
+     "tom": "C"
+    },
+    {
+     "musica": "o-medo-nao-vai-me-parar",
+     "tom": "C"
+    }
+   ]
+  },
+  {
+   "id": "2026-07-03-sexta",
+   "sala": "Sexta",
+   "data": "2026-07-03",
+   "musicas": [
+    {
+     "musica": "atrai-o-meu-coracao",
+     "tom": "E"
+    },
+    {
+     "musica": "sonda-me",
+     "tom": "A"
+    },
+    {
+     "musica": "tudo-e-perda",
+     "tom": "D"
+    },
+    {
+     "musica": "uma-vez",
+     "tom": "D"
+    },
+    {
+     "musica": "vou-te-alegrar",
+     "tom": "D"
+    },
+    {
+     "musica": "ate-que-nada-mais-importe",
+     "tom": "D"
+    },
+    {
+     "musica": "a-boa-parte",
+     "tom": "D"
+    }
+   ]
+  },
+  {
+   "id": "2026-06-26-sexta",
+   "sala": "Sexta",
+   "data": "2026-06-26",
+   "musicas": [
+    {
+     "musica": "tu-es-soberano",
+     "tom": "A"
+    },
+    {
+     "musica": "ao-unico",
+     "tom": "A"
+    },
+    {
+     "musica": "o-espirito-de-deus-esta-aqui",
+     "tom": "D"
+    },
+    {
+     "musica": "senhor-e-rei",
+     "tom": "D"
+    },
+    {
+     "musica": "sublime",
+     "tom": "D"
+    },
+    {
+     "musica": "poderoso-deus",
+     "tom": "D"
+    },
+    {
+     "musica": "vestes-brancas",
+     "tom": "D"
+    },
+    {
+     "musica": "toda-terra",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "soberano-tu-es-mncs",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "so-tu-es-santo",
+     "tom": "D",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "cultura-do-ceu",
+     "bloco": "Outras"
+    },
+    {
+     "musica": "a-terra-clama",
+     "bloco": "Outras"
+    }
+   ]
+  },
+  {
+   "id": "2026-06-19-sexta",
+   "sala": "Sexta",
+   "data": "2026-06-19",
+   "musicas": [
+    {
+     "musica": "maravilhoso-es"
+    },
+    {
+     "musica": "so-quero-a-ti"
+    },
+    {
+     "musica": "eu-so-quero-tua-presenca"
+    },
+    {
+     "musica": "me-atraiu"
+    },
+    {
+     "musica": "quem-e-esse"
+    },
+    {
+     "musica": "sublime"
+    },
+    {
+     "musica": "bondade-de-deus"
+    }
+   ]
+  },
+  {
+   "id": "2026-06-05-sexta",
+   "sala": "Sexta",
+   "data": "2026-06-05",
+   "musicas": [
+    {
+     "musica": "sei-que-a-tua-fidelidade",
+     "tom": "C",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "ha-um-lugar",
+     "tom": "E",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "bondade-de-deus",
+     "tom": "E",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "deus-de-alianca",
+     "tom": "E",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "outro-igual-nao-ha",
+     "tom": "E",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "vitorioso-es",
+     "tom": "E",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "aleluia-ele-venceu",
+     "tom": "E",
+     "bloco": "Adoração"
+    },
+    {
+     "musica": "porque-ele-vive",
+     "tom": "E",
+     "bloco": "Adoração"
+    }
+   ]
+  },
+  {
+   "id": "2026-05-29-sexta",
+   "sala": "Sexta",
+   "data": "2026-05-29",
+   "musicas": [
+    {
+     "musica": "essencia-da-adoracao",
+     "tom": "B",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "te-conhecer",
+     "tom": "B",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "vai-valer-a-pena",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "tua-graca-me-basta",
+     "tom": "D",
+     "bloco": "Devocional"
+    },
+    {
+     "musica": "em-espirito-em-verdade",
+     "tom": "D",
+     "bloco": "Pós intercessão"
+    },
+    {
+     "musica": "senhor-e-rei",
+     "tom": "D",
+     "bloco": "Pós intercessão"
+    },
+    {
+     "musica": "a-honra-a-gloria-a-forca",
+     "tom": "D",
+     "bloco": "Pós intercessão"
+    },
+    {
+     "musica": "porque-ele-vive",
+     "tom": "D",
+     "bloco": "Pós intercessão"
+    }
+   ]
+  },
+  {
+   "id": "2026-05-08-sexta",
+   "sala": "Sexta",
+   "data": "2026-05-08",
+   "musicas": [
+    {
+     "musica": "como-eu-te-amo",
+     "tom": "G"
+    },
+    {
+     "musica": "rendido-estou",
+     "tom": "G"
+    },
+    {
+     "musica": "dependente",
+     "tom": "E"
+    },
+    {
+     "musica": "toma-o-teu-lugar-make-room",
+     "tom": "E"
+    },
+    {
+     "musica": "na-minha-vida-so-tem-um-senhor",
+     "tom": "E"
+    },
+    {
+     "musica": "teu-toque",
+     "bloco": "Extra"
+    },
+    {
+     "musica": "eu-vou-construir",
+     "tom": "C"
+    }
+   ]
+  },
+  {
+   "id": "2026-04-24-sexta",
+   "sala": "Sexta",
+   "data": "2026-04-24",
+   "musicas": [
+    {
+     "musica": "me-esvaziar",
+     "tom": "D"
+    },
+    {
+     "musica": "tudo-e-perda",
+     "tom": "D"
+    },
+    {
+     "musica": "o-fogo-ardera",
+     "tom": "D"
+    },
+    {
+     "musica": "vou-te-alegrar",
+     "tom": "D"
+    },
+    {
+     "musica": "um-milhao-de-anos",
+     "tom": "D"
+    },
+    {
+     "musica": "correrei",
+     "tom": "D"
+    },
+    {
+     "musica": "toda-terra",
+     "tom": "D"
+    },
+    {
+     "musica": "sublime",
+     "tom": "D"
+    },
+    {
+     "musica": "so-quero-ver-voce",
+     "tom": "D"
+    },
+    {
+     "musica": "so-tu-es-santo",
+     "tom": "D",
+     "bloco": "Extra"
+    }
+   ]
+  },
+  {
+   "id": "2026-03-27-sexta",
+   "sala": "Sexta",
+   "data": "2026-03-27",
+   "musicas": [
+    {
+     "musica": "como-eu-te-amo",
+     "tom": "D"
+    },
+    {
+     "musica": "rendido-estou",
+     "tom": "D"
+    },
+    {
+     "musica": "se-eu-me-humilhar",
+     "tom": "D"
+    },
+    {
+     "musica": "eu-vou-construir",
+     "tom": "D"
+    },
+    {
+     "musica": "na-minha-vida-so-tem-um-senhor",
+     "tom": "D"
+    },
+    {
+     "musica": "oceanos-santo-espirito-me-leve-a-confiar",
+     "tom": "D"
+    },
+    {
+     "musica": "nao-seremos-abalados",
+     "tom": "D"
+    },
+    {
+     "musica": "a-fe",
+     "tom": "D"
+    },
+    {
+     "musica": "minhas-guerras",
+     "tom": "D"
+    }
+   ]
+  },
+  {
+   "id": "2026-03-26-sexta",
+   "sala": "Sexta",
+   "data": "2026-03-26",
+   "musicas": [
+    {
+     "musica": "este-e-o-meu-respirar"
+    },
+    {
+     "musica": "quero-ser-como-crianca"
+    },
+    {
+     "musica": "como-eu-te-amo"
+    },
+    {
+     "musica": "rendido-estou"
+    },
+    {
+     "musica": "se-eu-me-humilhar"
+    },
+    {
+     "musica": "eu-vou-construir"
+    },
+    {
+     "musica": "oceanos-santo-espirito-me-leve-a-confiar"
+    },
+    {
+     "musica": "nao-seremos-abalados"
+    },
+    {
+     "musica": "jeova-persegui-meus-inimigos"
+    }
+   ]
+  },
+  {
+   "id": "2026-03-20-sexta",
+   "sala": "Sexta",
+   "data": "2026-03-20",
+   "musicas": [
+    {
+     "musica": "leva-me-alem",
+     "tom": "G"
+    },
+    {
+     "musica": "sinto-fluir",
+     "tom": "G"
+    },
+    {
+     "musica": "lugar-secreto",
+     "tom": "G"
+    },
+    {
+     "musica": "que-ele-cresca",
+     "tom": "G"
+    },
+    {
+     "musica": "oceanos-santo-espirito-me-leve-a-confiar",
+     "tom": "G"
+    },
+    {
+     "musica": "poderoso-deus",
+     "tom": "G"
+    },
+    {
+     "musica": "faz-chover",
+     "tom": "G"
+    },
+    {
+     "musica": "se-pedirmos-jesus-vira",
+     "tom": "G"
+    },
+    {
+     "musica": "que-se-abram-os-ceus",
+     "tom": "G"
+    }
+   ]
+  }
+ ]
+}
